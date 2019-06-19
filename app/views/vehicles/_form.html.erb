@@ -36,6 +36,16 @@
     <%= collection_select(:vehicle, :vehicle_type_id, VehicleType.all, :id, :name) %>
   </div>
 
+  <div class="field">
+    <%= form.label :passenger_capacity %>
+    <%= form.number_field :passenger_capacity %>
+  </div>
+
+  <div class="field">
+    <%= form.label :max_weight %>
+    <%= form.number_field :max_weight %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

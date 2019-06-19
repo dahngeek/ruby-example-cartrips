@@ -32,3 +32,8 @@ rails g scaffold Driver first_name:string last_name:string document:integer pict
 rails g scaffold Trip date:datetime vehicle:references driver:references destination:string kilometers:integer
 
 ```
+Lastimosamente olvide agragar antes las siguientes columnas:
+```
+rails generate migration add_max_weight_to_vehicles max_weight:integer
+rails generate migration add_passenger_capacity_to_vehicles passenger_capacity:integer
+```

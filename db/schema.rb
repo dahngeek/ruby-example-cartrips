@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_19_190814) do
+ActiveRecord::Schema.define(version: 2019_06_19_193513) do
 
   create_table "drivers", force: :cascade do |t|
     t.string "first_name"
@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(version: 2019_06_19_190814) do
     t.integer "vehicle_type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "max_weight"
+    t.integer "passenger_capacity"
     t.index ["vehicle_type_id"], name: "index_vehicles_on_vehicle_type_id"
   end
 
