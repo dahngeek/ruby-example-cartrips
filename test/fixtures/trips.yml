@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2019-06-19 16:08:14
+  vehicle: one
+  driver: one
+  destination: MyString
+  kilometers: 1
+
+two:
+  date: 2019-06-19 16:08:14
+  vehicle: two
+  driver: two
+  destination: MyString
+  kilometers: 1
