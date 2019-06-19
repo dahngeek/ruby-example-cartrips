@@ -2,33 +2,38 @@
 
 <h1>Vehicles</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Brand</th>
-      <th>Model</th>
-      <th>Plate</th>
-      <th>Year</th>
-      <th>Vehicle type</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @vehicles.each do |vehicle| %>
-      <tr>
-        <td><%= vehicle.brand %></td>
-        <td><%= vehicle.model %></td>
-        <td><%= vehicle.plate %></td>
-        <td><%= vehicle.year %></td>
-        <td><%= vehicle.vehicle_type %></td>
-        <td><%= link_to 'Show', vehicle %></td>
-        <td><%= link_to 'Edit', edit_vehicle_path(vehicle) %></td>
-        <td><%= link_to 'Destroy', vehicle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="container">
+  <div class="row">
+    <% @tipos.each do |tipo| %>
+      <div class="col-md">
+        <h5><%= tipo.name %></h5>
+        <table class="table table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th>Auto</th>
+                <th>Año</th>
+                <th>Kilometros</th>
+                <th colspan="3"></th>
+              </tr>
+          </thead>
+          <tbody>
+              <% tipo.vehicles.each do |vehicle| %>
+                <tr>
+                  <td scope="row"><%= vehicle.describe %></td>
+                  <td><%= vehicle.year %></td>
+                  <td><%= vehicle.kilometers %></td>
+                  <td><%= link_to 'Show', vehicle %></td>
+                  <td><%= link_to 'Edit', edit_vehicle_path(vehicle) %></td>
+                  <td><%= link_to 'Destroy', vehicle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
 
 <br>
 

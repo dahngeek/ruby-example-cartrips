@@ -14,4 +14,12 @@ class Vehicle < ApplicationRecord
   def describe
     self.brand + " " + self.model + " " + self.year.to_s + " (" + self.plate + ")"
   end
+
+  def kilometers
+    km_recorridos = 0
+    self.trips.each do |viaje|
+        km_recorridos += viaje.kilometers
+    end
+    km_recorridos
+  end
 end
