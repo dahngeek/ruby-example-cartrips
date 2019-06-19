@@ -5,6 +5,7 @@ class TripsController < ApplicationController
   # GET /trips.json
   def index
     @trips = Trip.all
+    @trips = @trips.where(:driver_id => params[:chofer_id]) if params[:chofer_id]
   end
 
   # GET /trips/1

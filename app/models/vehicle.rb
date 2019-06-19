@@ -10,4 +10,8 @@ class Vehicle < ApplicationRecord
     errors.add(:max_weight, 'cant be nil')  if (@type.name == "Carga" && max_weight.nil?)
     errors.add(:passenger_capacity, 'cant be nil')  if (@type.name == "Transporte" && passenger_capacity.nil?)
   end
+
+  def describe
+    self.brand + " " + self.model + " " + self.year.to_s + " (" + self.plate + ")"
+  end
 end
