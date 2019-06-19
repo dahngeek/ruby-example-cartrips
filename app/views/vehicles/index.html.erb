@@ -14,7 +14,7 @@
                 <th>Auto</th>
                 <th>Año</th>
                 <th>Kilometros</th>
-                <th colspan="3"></th>
+                <th colspan="4"></th>
               </tr>
           </thead>
           <tbody>
@@ -23,6 +23,9 @@
                   <td scope="row"><%= vehicle.describe %></td>
                   <td><%= vehicle.year %></td>
                   <td><%= vehicle.kilometers %></td>
+                  <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-<%= vehicle.id %>">
+                      Ver Viajes
+                    </button></td>
                   <td><%= link_to 'Show', vehicle %></td>
                   <td><%= link_to 'Edit', edit_vehicle_path(vehicle) %></td>
                   <td><%= link_to 'Destroy', vehicle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -35,6 +38,42 @@
   </div>
 </div>
 
+
+<% @tipos.each do |tipo| %>
+  <% tipo.vehicles.each do |vehicle| %>
+    <div class="modal fade" id="modal-<%= vehicle.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+                <table class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                          <th>Date</th>
+                          <th>Vehicle</th>
+                          <th>Driver</th>
+                          <th>Destination</th>
+                          <th>Kilometers</th>
+                      </tr>
+                    </thead>
+                  
+                    <tbody>
+                      <% vehicle.trips.each do |trip| %>
+                        <tr>
+                            <td><%= trip.date %></td>
+                            <td><%= trip.vehicle.describe %></td>
+                            <td><%= trip.driver.full_name %></td>
+                            <td><%= trip.destination %></td>
+                            <td><%= trip.kilometers %></td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>                              
+            </div>
+          </div>
+        </div>
+      </div>
+  <% end %>
+    <% end %>
 <br>
 
 <%= link_to 'New Vehicle', new_vehicle_path, :class=>"btn btn-primary active" %>
